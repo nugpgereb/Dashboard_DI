@@ -1,20 +1,20 @@
 :root {
-  --page: #eef3f8;
+  --page: #f2f5f9;
   --surface: #ffffff;
   --surface-soft: #f8fbff;
   --ink: #0f172a;
   --muted: #5f6f82;
   --line: #dbe4ef;
   --line-strong: #c8d5e4;
-  --primary: #1b4f8f;
-  --primary-strong: #123b6d;
-  --primary-soft: #e9f3ff;
-  --green: #047b8d;
+  --primary: #1d4f91;
+  --primary-strong: #153f75;
+  --primary-soft: #edf5ff;
+  --green: #0f7490;
   --green-soft: #eaf7fb;
   --gold: #6f86a6;
   --gold-soft: #f3f7fb;
   --red: #9f3a38;
-  --radius: 8px;
+  --radius: 14px;
 }
 
 * {
@@ -30,9 +30,7 @@ body {
   margin: 0;
   padding: 20px;
   color: var(--ink);
-  background:
-    linear-gradient(180deg, rgba(27, 79, 143, 0.08) 0, rgba(27, 79, 143, 0) 260px),
-    var(--page);
+  background: var(--page);
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -76,12 +74,10 @@ button {
   gap: 32px;
   padding: 24px 24px 22px 28px;
   overflow: hidden;
-  background:
-    linear-gradient(135deg, rgba(233, 243, 255, 0.72), rgba(255, 255, 255, 0) 45%),
-    var(--surface);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
 }
 
 .app-hero::before {
@@ -105,15 +101,6 @@ button {
   font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
-}
-
-.hero-kicker {
-  display: inline-flex;
-  width: fit-content;
-  padding: 5px 9px;
-  background: var(--primary-soft);
-  border: 1px solid rgba(27, 79, 143, 0.14);
-  border-radius: 999px;
 }
 
 .title-section h1 {
@@ -212,7 +199,7 @@ button {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.025);
 }
 
 .filters-card,
@@ -409,45 +396,35 @@ button {
 
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: 1.25fr 1.25fr 0.8fr 0.8fr;
   gap: 12px;
 }
 
 .kpi-card {
   min-width: 0;
-  min-height: 132px;
-  padding: 16px;
+  min-height: 144px;
+  padding: 18px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  border-top: 4px solid var(--green);
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.035);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.kpi-card:hover,
-.ranking-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 26px rgba(15, 23, 42, 0.07);
+.kpi-card--primary {
+  background: #173e6b;
+  border-color: #173e6b;
 }
 
-.kpi-card::before {
-  display: none;
-}
-
-.kpi-card:nth-child(2),
-.kpi-card:nth-child(4) {
-  border-top-color: var(--primary);
-}
-
-.kpi-card:nth-child(3),
-.kpi-card:nth-child(5) {
-  border-top-color: var(--gold);
-}
+.kpi-card--primary .kpi-title,
+.kpi-card--primary .kpi-meta { color: #d2e4f6; }
+.kpi-card--primary .kpi-value { color: #ffffff; }
+.kpi-title i { margin-right: 7px; }
 
 .kpi-title {
-  min-height: 34px;
-  margin-bottom: 8px;
+  min-height: 20px;
+  margin-bottom: 16px;
   color: var(--muted);
   font-size: 0.72rem;
   font-weight: 600;
@@ -457,7 +434,7 @@ button {
 
 .kpi-value {
   color: var(--ink);
-  font-size: clamp(1.12rem, 1.7vw, 1.52rem);
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
   font-weight: 600;
   line-height: 1.25;
   overflow-wrap: anywhere;
@@ -556,7 +533,7 @@ button {
 
 .ranking-list {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: 1.25fr 1.25fr 0.8fr 0.8fr;
   gap: 12px;
 }
 
@@ -570,7 +547,6 @@ button {
   background: var(--surface-soft);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
 .ranking-position {
@@ -814,7 +790,7 @@ footer {
   text-align: center;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1280px) {
   .app-hero,
   .charts-row {
     grid-template-columns: 1fr;
@@ -833,7 +809,6 @@ footer {
     grid-column: auto;
   }
 
-  .kpi-grid,
   .ranking-list,
   .info-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -864,7 +839,6 @@ footer {
 
   .hero-side,
   .filters-grid,
-  .kpi-grid,
   .ranking-list,
   .filtros-detalhes,
   .info-grid {
@@ -950,4 +924,27 @@ footer {
   .modal-table-wrap {
     padding: 0 14px 14px;
   }
+}
+
+
+/* Cabe?alho e indicadores de execu??o */
+.app-hero { padding: 30px; border-top: 4px solid #173e6b; }
+.app-hero::before { display: none; }
+.filters-card { background: #fbfcfe; }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid #76a9df; outline-offset: 3px; }
+@media (min-width: 1100px) {
+  .app-hero { grid-template-columns: minmax(0, 1fr) minmax(340px, 440px); }
+  .charts-row--primary { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); }
+}
+@media (max-width: 760px) {
+  .app-hero { padding: 22px 18px; }
+  .kpi-card { min-height: 132px; padding: 18px; }
+  .kpi-value { font-size: 1.65rem; }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 599px) {
+  .kpi-grid { grid-template-columns: 1fr; }
 }
